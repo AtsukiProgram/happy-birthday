@@ -1,0 +1,453 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+}
+
+/* パスワード画面 */
+.password-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.password-container {
+    text-align: center;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    background: white;
+    border: 2px solid #f0f0f0;
+}
+
+.password-container h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+#password-input {
+    width: 300px;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#password-input:focus {
+    border-color: #4facfe;
+}
+
+#password-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#password-submit:hover {
+    transform: translateY(-2px);
+}
+
+#error-message {
+    color: #ff4757;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.error-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.error-visible {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease;
+}
+
+/* メインコンテンツの表示/非表示 */
+.content-hidden {
+    display: none;
+}
+
+.content-visible {
+    display: block;
+}
+
+/* パスワード画面の非表示 */
+.password-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+/* トップセクション */
+#top-section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+}
+
+#top-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 右下のボタン */
+.celebration-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.celebration-button:hover {
+    transform: scale(1.1);
+}
+
+.circle {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(79, 172, 254, 0.3);
+}
+
+.emoji {
+    font-size: 30px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 垂れ幕 */
+.banner {
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 600px;
+    z-index: 20;
+    opacity: 0;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+/* 垂れ幕のアニメーション（ページの上部で停止するように修正） */
+.banner.drop-in {
+    animation: dropIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.banner.drop-out {
+    animation: dropOut 2s ease-in forwards;
+}
+
+@keyframes dropIn {
+    0% {
+        top: -200px;
+        opacity: 0;
+    }
+    70% {
+        top: 80px;
+        opacity: 1;
+    }
+    100% {
+        top: 60px;
+        opacity: 1;
+    }
+}
+
+@keyframes dropOut {
+    0% {
+        top: 60px;
+        opacity: 1;
+    }
+    100% {
+        top: -300px;
+        opacity: 0;
+    }
+}
+
+/* ボタンを隠すアニメーション */
+.celebration-button.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.celebration-button.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease;
+}
+
+/* カウントダウンセクション */
+#countdown-section {
+    min-height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+.countdown-container {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.countdown-container h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.countdown-display {
+    font-size: 3rem;
+    color: #4facfe;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(79, 172, 254, 0.3);
+}
+
+.countdown-display span {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 15px 20px;
+    background: rgba(79, 172, 254, 0.1);
+    border-radius: 10px;
+    min-width: 80px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .password-container {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    #password-input {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .celebration-button {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .emoji {
+        font-size: 24px;
+    }
+
+    .countdown-container h2 {
+        font-size: 2rem;
+    }
+
+    .countdown-display {
+        font-size: 2rem;
+    }
+
+    .countdown-display span {
+        margin: 5px;
+        padding: 10px 15px;
+        min-width: 60px;
+    }
+
+    .banner {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .password-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .countdown-display {
+        font-size: 1.5rem;
+    }
+
+    .countdown-display span {
+        margin: 5px 2px;
+        padding: 8px 10px;
+        min-width: 50px;
+    }
+}
+/* クラッカー画像 */
+.cracker {
+    position: absolute;
+    bottom: 30px;
+    width: 250px;  /* 180px から 250px に変更 */
+    height: auto;
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.left-cracker {
+    left: 30px;
+    transform: translateX(-200px);  /* -150px から -200px に変更 */
+}
+
+.right-cracker {
+    right: 30px;
+    transform: translateX(200px);  /* 150px から 200px に変更 */
+}
+
+.cracker img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
+}
+
+/* クラッカーのアニメーション */
+.cracker.show {
+    opacity: 1;
+    visibility: visible;
+    animation: crackerSlideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.cracker.hide {
+    animation: crackerSlideOut 0.8s ease-in forwards;
+}
+
+@keyframes crackerSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px);  /* -150px から -200px に変更 */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.right-cracker.show {
+    animation: crackerSlideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes crackerSlideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(200px);  /* 150px から 200px に変更 */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes crackerSlideOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-200px);  /* -150px から -200px に変更 */
+    }
+}
+
+.right-cracker.hide {
+    animation: crackerSlideOutRight 0.8s ease-in forwards;
+}
+
+@keyframes crackerSlideOutRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(200px);  /* 150px から 200px に変更 */
+    }
+}
+
+/* レスポンシブデザインの追加 */
+@media (max-width: 768px) {
+    .cracker {
+        width: 180px;  /* 120px から 180px に変更 */
+        bottom: 100px;
+    }
+
+    .left-cracker {
+        left: 20px;
+    }
+
+    .right-cracker {
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cracker {
+        width: 150px;
+        bottom: 120px;
+    }
+
+    .left-cracker {
+        left: 15px;
+    }
+
+    .right-cracker {
+        right: 15px;
+    }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <!-- ファビコン設定 -->
+    <link rel="icon" href="images/fav.png?v=1" type="image/png">
+    <link rel="shortcut icon" href="images/fav.png?v=1" type="image/png">
+    <link rel="apple-touch-icon" href="images/fav.png?v=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/fav.png?v=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/fav.png?v=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/fav.png?v=1">
+    <meta name="msapplication-TileImage" content="images/fav.png?v=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- 以下は変更なし -->
+<body>
+    <!-- パスワード入力画面 -->
+    <div id="password-screen" class="password-overlay">
+        <div class="password-container">
+            <h2>パスワードを入力してください</h2>
+            <input type="password" id="password-input" placeholder="パスワード">
+            <button id="password-submit">確認</button>
+            <div id="error-message" class="error-hidden">パスワードが間違っています</div>
+        </div>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <div id="main-content" class="content-hidden">
+        <!-- トップセクション -->
+        <section id="top-section">
+            <div class="background-image">
+                <img src="images/top.png" alt="Top Background" id="top-bg">
+            </div>
+
+            <!-- 右下のボタン -->
+            <div class="celebration-button" id="celebration-btn">
+                <div class="circle">
+                    <span class="emoji">🎉</span>
+                </div>
+            </div>
+
+            <!-- 垂れ幕 -->
+            <div class="banner" id="banner">
+                <img src="images/HB.png" alt="Happy Birthday Banner">
+            </div>
+
+            <!-- クラッカー画像 -->
+            <div class="cracker left-cracker" id="left-cracker">
+                <img src="images/cracker1.png" alt="Left Cracker">
+            </div>
+            <div class="cracker right-cracker" id="right-cracker">
+                <img src="images/cracker2.png" alt="Right Cracker">
+            </div>
+        </section>
+
+        <!-- カウントダウンセクション -->
+        <section id="countdown-section">
+            <div class="countdown-container">
+                <h2>誕生日まで</h2>
+                <div class="countdown-display" id="countdown">
+                    <span id="days">0</span>日
+                    <span id="hours">0</span>時間
+                    <span id="minutes">0</span>分
+                    <span id="seconds">0</span>秒
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
